@@ -1,0 +1,28 @@
+﻿<Page x:Class="AdministrationApp.ReportsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Отчеты">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Создать отчет" Click="GenerateReport_Click" Margin="5"/>
+            <Button Content="Просмотреть" Click="ViewReport_Click" Margin="5"/>
+            <Button Content="Экспорт" Click="ExportReport_Click" Margin="5"/>
+            <Button Content="Обновить" Click="RefreshReports_Click" Margin="5"/>
+        </StackPanel>
+
+        <DataGrid x:Name="ReportsGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding ReportID}" Width="Auto"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding ReportType}" Width="Auto"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding GeneratedDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto"/>
+                <DataGridTextColumn Header="Автор" Binding="{Binding GeneratedBy}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

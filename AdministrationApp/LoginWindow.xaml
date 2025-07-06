@@ -1,0 +1,29 @@
+﻿<Window x:Class="AdministrationApp.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация" Height="200" Width="300"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Вход в систему" FontSize="16" FontWeight="Bold" Grid.Row="0" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Имя пользователя:"/>
+            <TextBox x:Name="UsernameTextBox"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,0,0,20">
+            <TextBlock Text="Пароль:"/>
+            <PasswordBox x:Name="PasswordBox"/>
+        </StackPanel>
+
+        <Button Content="Войти" Grid.Row="4" Width="100" HorizontalAlignment="Right" Click="LoginButton_Click"/>
+    </Grid>
+</Window>

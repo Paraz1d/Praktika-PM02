@@ -1,0 +1,35 @@
+﻿<Page x:Class="AdministrationApp.DocumentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Документы">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Добавить" Click="AddDocument_Click" Margin="5"/>
+            <Button Content="Редактировать" Click="EditDocument_Click" Margin="5"/>
+            <Button Content="Удалить" Click="DeleteDocument_Click" Margin="5"/>
+            <Button Content="Обновить" Click="RefreshDocuments_Click" Margin="5"/>
+            <ComboBox x:Name="FilterComboBox" Width="150" Margin="5" SelectionChanged="FilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="Все документы" Tag="All"/>
+                <ComboBoxItem Content="Черновики" Tag="Draft"/>
+                <ComboBoxItem Content="Опубликованные" Tag="Published"/>
+                <ComboBoxItem Content="Архивные" Tag="Archived"/>
+            </ComboBox>
+        </StackPanel>
+
+        <DataGrid x:Name="DocumentsGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding DocumentID}" Width="Auto"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding DocumentType}" Width="Auto"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Автор" Binding="{Binding Author}" Width="Auto"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding CreatedDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

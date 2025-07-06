@@ -1,0 +1,36 @@
+﻿<Page x:Class="AdministrationApp.AppealsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Обращения граждан">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель инструментов -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Добавить" Click="AddAppeal_Click" Margin="5"/>
+            <Button Content="Редактировать" Click="EditAppeal_Click" Margin="5"/>
+            <Button Content="Удалить" Click="DeleteAppeal_Click" Margin="5"/>
+            <Button Content="Обновить" Click="RefreshAppeals_Click" Margin="5"/>
+            <ComboBox x:Name="FilterComboBox" Width="150" Margin="5" SelectionChanged="FilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="Все обращения" Tag="All"/>
+                <ComboBoxItem Content="Новые" Tag="New"/>
+                <ComboBoxItem Content="В работе" Tag="InProgress"/>
+                <ComboBoxItem Content="Завершенные" Tag="Completed"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Список обращений -->
+        <DataGrid x:Name="AppealsGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding AppealID}" Width="Auto"/>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding AppealDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="Auto"/>
+                <DataGridTextColumn Header="Ответственный" Binding="{Binding ResponsiblePerson}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
